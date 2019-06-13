@@ -205,22 +205,7 @@ function findLast(list) {
 }
 // console.log(findLast(ll));
 
-class DLinkedList {
-    constructor() {
-        this.head = null;
-        this.tail = null;
-    }
-    insertFirstDll(item) {
-        let node = new _Node(item, this.head, null);
-        if (this.head !== null) {
-            this.head.prev = node;
-        }
-        this.head = node;
-        if (this.tail === null) {
-            this.tail = node;
-        }
-    }
-}
+
 // 4. mistey driver 
 function deleteDup(lst) {
     let current = lst.head;
@@ -259,6 +244,7 @@ function fromEnd(list, num){
     while (i < count) {
         currNode = currNode.next;
         i++;
+        
     }
     console.log(currNode.value);
 }
@@ -278,5 +264,34 @@ function getMid(list){
 getMid(ll);
 
 function cycList(list){
-    
+    let current = list.head;
+    while(current !== null){
+        let listItem = current;
+        while (listItem.next !== null){
+            if (current === listItem.next){
+                return true;
+            } else {
+                listItem = listItem.next;
+            }
+        }
+        current = current.next;
+    }
+    return false
+}
+
+class DLinkedList {
+    constructor() {
+        this.head = null;
+        this.tail = null;
+    }
+    insertFirstDll(item) {
+        let node = new _Node(item, this.head, null);
+        if (this.head !== null) {
+            this.head.prev = node;
+        }
+        this.head = node;
+        if (this.tail === null) {
+            this.tail = node;
+        }
+    }
 }
