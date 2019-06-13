@@ -79,3 +79,19 @@ ll.insertFirst(5)
 
 console.log(ll.head)
 
+class DLinkedList {
+    constructor(){
+        this.head = null;
+        this.tail = null;
+    }
+    insertFirstDll(item){
+        let node = new _Node(item, this.head, null)
+            if(this.head !== null){
+                this.head.prev = node;
+            }
+            this.head = node;
+            if(this.tail === null){
+                this.tail = node;
+            }
+    }
+}
