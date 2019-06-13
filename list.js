@@ -154,16 +154,53 @@ function display(list){
     console.log( values);
 
 }
-console.log(display(ll));
+// console.log(display(ll));
 
 // size: returns the size of the linked list
+function size(list){
+    let length= 1;
+    let currNode = list.head;
+    if (!list.head) {
+        return null;
+    }
+    while (currNode.next !== null) {
 
+        currNode = currNode.next;
+        length++;
+    }
+    console.log(length);
+}
 
+console.log(size(ll));
 // isEmpty: finds if the list is empty or not(without using the size() function)
-
+function isEmpty(list){
+    if(!list.head){
+        return;
+    }else{
+        return true;
+    }
+}
+console.log(isEmpty(ll));
 // findPrevious: finds the node before the item you are looking for
+function findPrevious(list , item){
+    let currNode = list.head;
+    while(currNode.next.value !== item){
+        currNode = currNode.next;
+        
+    }
+    console.log(currNode.value);
+}
+// console.log(findPrevious(ll, 'other' ));
 
 // findLast: returns the last node in the linked list
+function findLast(list){
+    let currNode = list.head;
+    while(currNode.next !== null){
+        currNode = currNode.next;
+    }
+    console.log(currNode.value);
+}
+console.log(findLast(ll));
 
 class DLinkedList {
     constructor(){
