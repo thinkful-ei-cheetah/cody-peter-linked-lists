@@ -25,14 +25,54 @@ class LinkedList {
         }
         tempNode.next = new _Node(item, null) 
     }
-    insertBefore(item, ){
-
+    insertBefore(item, target){
+        let currNode = this.head;
+        if(!this.head){
+            return null;
+        }
+        while(currNode.next.value !== target ){
+            if (currNode.next.value === null){
+                return null;
+            }
+            else{
+                currNode = currNode.next
+            }
+        }
+        item.next = currNode.next
+        currNode.next = item;
+        
     }
-    insertAfter(){
-
+    insertAfter(item, target){
+        let currNode = this.head;
+        if(!this.head){
+            return null;
+        }
+        while(currNode.value !== target){
+            if(currNode.next === null){
+                return null;
+            }
+            else{
+                currNode = currNode.next
+            }
+        }
+        item.next = currNode.next;
+        currNode.next = item;
     }
-    insertAt(){
-
+    insertAt(item, pos){
+        let i = 0;
+        let currNode = this.head;
+        if(!this.head){
+            return null;
+        }
+        while( i < pos ){
+            currNode = currNode.next;
+            if(currNode.next === null){
+                return null
+            }
+            i++;
+        }
+        item.next = currNode.next;
+        currNode.next = item;
     }
 
     find(item){
@@ -76,8 +116,9 @@ class LinkedList {
 
 let ll = new LinkedList();
 ll.insertFirst(5)
+ll.insertLast('tauhida');
 
-console.log(ll.head)
+console.log(ll)
 
 class DLinkedList {
     constructor(){
