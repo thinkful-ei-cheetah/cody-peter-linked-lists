@@ -38,8 +38,7 @@ class LinkedList {
                 currNode = currNode.next
             }
         }
-        item.next = currNode.next
-        currNode.next = item;
+        currNode.next = new _Node(item, currNode.next);
         
     }
     insertAfter(item, target){
@@ -55,24 +54,26 @@ class LinkedList {
                 currNode = currNode.next
             }
         }
-        item.next = currNode.next;
-        currNode.next = item;
+        currNode.next = new _Node(item, currNode.next);
     }
     insertAt(item, pos){
-        let i = 0;
+        let i = 0 ;
         let currNode = this.head;
+        
+        if(pos === 0){
+            this.insertFirst(item)
+        }
         if(!this.head){
             return null;
         }
         while( i < pos ){
+
             currNode = currNode.next;
-            if(currNode.next === null){
-                return null
-            }
             i++;
-        }
-        item.next = currNode.next;
-        currNode.next = item;
+
+            }
+        this.insertBefore(item, currNode.value)
+        
     }
 
     find(item){
@@ -96,14 +97,14 @@ class LinkedList {
             return null;
         }
 
-        if(this.head.value === item {
-            this.head = this.head.next
-        })
+        if(this.head.value === item) {
+            this.head = this.head.next;
+        }
         let currNode = this.head
         let previousNode = this.head;
         while((currNode !== null) && (currNode.value !== item)){
             previousNode = currNode;
-            currNode = currNode.next
+            currNode = currNode.next;
         }
         if(currNode === null){
             console.log('item not found')
@@ -115,10 +116,28 @@ class LinkedList {
 
 
 let ll = new LinkedList();
-ll.insertFirst(5)
-ll.insertLast('tauhida');
+ll.insertFirst('tauhida');
+ll.insertFirst('tauhida');
+ll.insertFirst('tauhida');
+ll.insertAt("kat", 1);
+
 
 console.log(ll)
+
+function main(){
+    let SLL = new LinkedList();
+    SLL.insertFirst('Apollo');
+    SLL.insertLast('Boomer');
+    SLL.insertLast('Helo');
+    SLL.insertLast('Husker');
+    SLL.insertLast('Starbuck');
+    SLL.insertLast('Tauhida');
+    SLL.remove('squirrel');
+    SLL.insertBefore("Athena", "Boomer");
+    SLL.insertAfter("hotdog", "Helo");
+    SLL.insertAt("kat", 2);
+    SLL.remove("Tauhida");
+}
 
 class DLinkedList {
     constructor(){
