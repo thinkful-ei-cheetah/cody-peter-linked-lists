@@ -237,20 +237,20 @@ function reverse(list) {
 reverse(ll);
 console.log(ll);
 
-function fromEnd(list, num){
+function fromEnd(list, num) {
     let currNode = list.head;
     let i = 0;
     let count = (size(list) - num)
     while (i < count) {
         currNode = currNode.next;
         i++;
-        
+
     }
     console.log(currNode.value);
 }
- fromEnd(ll,3)
+fromEnd(ll, 3)
 
-function getMid(list){
+function getMid(list) {
     let currNode = list.head;
     let i = 0;
     let count = Math.floor(size(list) / 2)
@@ -263,12 +263,12 @@ function getMid(list){
 
 getMid(ll);
 
-function cycList(list){
+function cycList(list) {
     let current = list.head;
-    while(current !== null){
+    while (current !== null) {
         let listItem = current;
-        while (listItem.next !== null){
-            if (current === listItem.next){
+        while (listItem.next !== null) {
+            if (current === listItem.next) {
                 return true;
             } else {
                 listItem = listItem.next;
@@ -294,4 +294,105 @@ class DLinkedList {
             this.tail = node;
         }
     }
+    insertLastDll(item) {
+
+        let node = new _Node(item, null, this.tail);
+        if (this.tail !== null) {
+            this.tail.next = node;
+        }
+        this.tail = node;
+        if (this.head === null) {
+            this.head = node;
+        }
+    }
+
+    insertBeforeDll(item, target){
+        let currNode = this.head;
+
+        if (!this.head) {
+            return null;
+        }
+        while (currNode.next.value !== target) {
+            if (currNode.next.value === null) {
+                return null;
+            }
+            else {
+                currNode = currNode.next;
+                
+            }
+        }
+        currNode.next = new _Node(item, currNode.next, currNode);
+
+    }
+    insertAfterDll(item, target) {
+        let currNode = this.tail;
+        if (!this.head) {
+            return null;
+        }
+        while (currNode.value !== target) {
+            if (currNode.next === null) {
+                return null;
+            }
+            else {
+                currNode = currNode.prev;
+            }
+        }
+        currNode.next = new _Node(item, currNode.next, currNode);
+    }
+
+    insertAtDll(item, pos) {
+        let i = 0;
+        let currNode = this.head;
+
+        if (!this.head) {
+            return null;
+        }
+        while (i < pos) {
+
+            currNode = currNode.next;
+            i++;
+
+        }
+        this.insertBeforeDll(item, currNode.value);
+
+    }
+
+    findDll(item){
+        let currNode = this.tail;
+        if (!this.tail) {
+            return null;
+        }
+        while (currNode.value !== item) {
+            if (currNode.prev === null) {
+                return null;
+            }
+            else {
+                currNode = currNode.prev;
+            }
+        }
+        return currNode;
+    }
+    removeDll(item) {
+
+        if (!this.head) {
+            return null;
+        }
+
+        if (this.head.value === item) {
+            this.head = this.head.next;
+        }
+        let currNode = this.head;
+        let previousNode = this.head;
+        while ((currNode !== null) && (currNode.value !== item)) {
+            previousNode = currNode;
+            currNode = currNode.next;
+        }
+        if (currNode === null) {
+            console.log('item not found');
+            return;
+        }
+        previousNode.next = currNode.next;
+        currNode.next.prev= previousNode;
+    }
+
 }
