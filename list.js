@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-'use strict'
+'use strict';
 
 class _Node {
     constructor(value, next) {
@@ -23,7 +23,7 @@ class LinkedList {
         while(tempNode.next !== null){
             tempNode = tempNode.next;
         }
-        tempNode.next = new _Node(item, null) 
+        tempNode.next = new _Node(item, null); 
     }
     insertBefore(item, target){
         let currNode = this.head;
@@ -35,7 +35,7 @@ class LinkedList {
                 return null;
             }
             else{
-                currNode = currNode.next
+                currNode = currNode.next;
             }
         }
         currNode.next = new _Node(item, currNode.next);
@@ -51,7 +51,7 @@ class LinkedList {
                 return null;
             }
             else{
-                currNode = currNode.next
+                currNode = currNode.next;
             }
         }
         currNode.next = new _Node(item, currNode.next);
@@ -61,7 +61,7 @@ class LinkedList {
         let currNode = this.head;
         
         if(pos === 0){
-            this.insertFirst(item)
+            this.insertFirst(item);
         }
         if(!this.head){
             return null;
@@ -72,25 +72,25 @@ class LinkedList {
             i++;
 
             }
-        this.insertBefore(item, currNode.value)
+        this.insertBefore(item, currNode.value);
         
     }
 
     find(item){
-        let currNode = this.head
+        let currNode = this.head;
 
         if (!this.head){
-            return null
+            return null;
         }
         while (currNode.value !== item){
             if(currNode.next === null){
-                return null
+                return null;
             }
             else{
-                currNode = currNode.next
+                currNode = currNode.next;
             }
         }
-        return currNode
+        return currNode;
     }
     remove(item){
         if(!this.head){
@@ -100,14 +100,14 @@ class LinkedList {
         if(this.head.value === item) {
             this.head = this.head.next;
         }
-        let currNode = this.head
+        let currNode = this.head;
         let previousNode = this.head;
         while((currNode !== null) && (currNode.value !== item)){
             previousNode = currNode;
             currNode = currNode.next;
         }
         if(currNode === null){
-            console.log('item not found')
+            console.log('item not found');
             return;
         }
         previousNode.next = currNode.next;
@@ -117,12 +117,12 @@ class LinkedList {
 
 let ll = new LinkedList();
 ll.insertFirst('tauhida');
-ll.insertFirst('tauhida');
-ll.insertFirst('tauhida');
-ll.insertAt("kat", 1);
+ll.insertFirst('other');
+ll.insertFirst('stuff');
+// ll.insertAt('kat', 1);
 
 
-console.log(ll)
+// console.log(ll);
 
 function main(){
     let SLL = new LinkedList();
@@ -133,11 +133,37 @@ function main(){
     SLL.insertLast('Starbuck');
     SLL.insertLast('Tauhida');
     SLL.remove('squirrel');
-    SLL.insertBefore("Athena", "Boomer");
-    SLL.insertAfter("hotdog", "Helo");
-    SLL.insertAt("kat", 2);
-    SLL.remove("Tauhida");
+    SLL.insertBefore('Athena', 'Boomer');
+    SLL.insertAfter('hotdog', 'Helo');
+    SLL.insertAt('kat', 2);
+    SLL.remove('Tauhida');
 }
+// display: displays the linked list
+function display(list){
+    let values = '';
+    let currNode = list.head;
+    if (!list.head) {
+        return null;
+    }
+    while (currNode.next !== null) {
+
+        values+= currNode.value;
+        currNode = currNode.next;
+    }
+    values+= currNode.value;
+    console.log( values);
+
+}
+console.log(display(ll));
+
+// size: returns the size of the linked list
+
+
+// isEmpty: finds if the list is empty or not(without using the size() function)
+
+// findPrevious: finds the node before the item you are looking for
+
+// findLast: returns the last node in the linked list
 
 class DLinkedList {
     constructor(){
@@ -145,7 +171,7 @@ class DLinkedList {
         this.tail = null;
     }
     insertFirstDll(item){
-        let node = new _Node(item, this.head, null)
+        let node = new _Node(item, this.head, null);
             if(this.head !== null){
                 this.head.prev = node;
             }
