@@ -119,6 +119,8 @@ let ll = new LinkedList();
 ll.insertFirst('tauhida');
 ll.insertFirst('other');
 ll.insertFirst('stuff');
+ll.insertLast('Helo');
+ll.insertLast('Husker');
 // ll.insertAt('kat', 1);
 
 
@@ -169,6 +171,7 @@ function size(list) {
         length++;
     }
     console.log(length);
+    return length;
 }
 
 // console.log(size(ll));
@@ -247,4 +250,33 @@ function reverse(list) {
 
 }
 reverse(ll);
-console.log(display(ll));
+console.log(ll);
+
+function fromEnd(list, num){
+    let currNode = list.head;
+    let i = 0;
+    let count = (size(list) - num)
+    while (i < count) {
+        currNode = currNode.next;
+        i++;
+    }
+    console.log(currNode.value);
+}
+ fromEnd(ll,3)
+
+function getMid(list){
+    let currNode = list.head;
+    let i = 0;
+    let count = Math.floor(size(list) / 2)
+    while (i < count) {
+        currNode = currNode.next;
+        i++;
+    }
+    console.log(currNode.value);
+}
+
+getMid(ll);
+
+function cycList(list){
+    
+}
